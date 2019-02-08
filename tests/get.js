@@ -48,4 +48,31 @@ QUnit.module('Тестируем функцию get', function () {
 		assert.strictEqual(get(object, '.baz.length'), undefined);
 		assert.strictEqual(get(object, '.0.1.2'), undefined);
 	});
+
+	QUnit.test('get работает правильно c глубокой вложенностью', function (assert) {
+		const object = {
+			foo: {
+				fo: {
+					f: ["f", "o", "o"]
+				},
+				f: "Respect"
+			},
+			bar: {
+				ba: {
+					r: {
+						prop: "it works!"
+					},
+					prop: "yes, it does!"
+				}
+			}
+		};
+
+		assert.strictEqual(get(object, '.foo.fo.f.0'), object.foo.fo.f[ 0 ]);
+		assert.strictEqual(get(object, '.foo.fo.f.f'), undefined);
+		assert.strictEqual(get(object, '.foo.fo.f.3'), undefined);
+		assert.strictEqual(get(object, '.foo.fo.f'), object.foo.fo.f);
+		assert.strictEqual(get(object, '.bar.ba.r.prop'), object.bar.ba.r.prop);
+		assert.strictEqual(get(object, '.bar.ba.r.prop.length'), object.bar.ba.r.prop.length);
+		assert.strictEqual(get(object, '.bar.ba.prop'), object.bar.ba.prop);
+	});
 });
