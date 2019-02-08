@@ -53,16 +53,16 @@ QUnit.module('Тестируем функцию get', function () {
 		const object = {
 			foo: {
 				fo: {
-					f: ["f", "o", "o"]
+					f: ['f', 'o', 'o']
 				},
-				f: "Respect"
+				f: 'Respect'
 			},
 			bar: {
 				ba: {
 					r: {
-						prop: "it works!"
+						prop: 'it works!'
 					},
-					prop: "yes, it does!"
+					prop: 'yes, it does!'
 				}
 			}
 		};
