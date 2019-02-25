@@ -1,12 +1,8 @@
 'use strict';
 
 const get = function (object, prop) {
-    if (typeof object !== 'object') {
-        throw new TypeError('object expected');
-    }
-
-    if (typeof prop !== 'string') {
-        throw new TypeError('string expected');
+    if (typeof object !== 'object' || typeof prop !== 'string') {
+        return null;
     }
 
     let propArr = prop.split('.').filter(str => str !== '');
